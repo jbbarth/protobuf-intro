@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+message Captain {
+  string name = 1;
+  bool hook = 4;
+}
+
+message CrewMember {
+  string name = 1;
+  string rank = 2;
+}
+
+message Boat {
+  string name = 1;
+
+  // crew
+  Captain captain = 2;
+  repeated CrewMember sailors = 5;
+
+  // assets
+  enum PropulsionType {
+    WIND = 0;
+    COAL = 1;
+    NUCLEAR = 2;
+  }
+  PropulsionType propulsion_kind = 7;
+  oneof propulsion_attribute {
+    string coalType = 8;
+    int32 plutoniumIsotope = 9;
+  }
+}
+
